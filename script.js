@@ -106,6 +106,8 @@ function restart() {
     rockBtn.disabled = false;
     paperBtn.disabled = false;
     scissorsBtn.disabled = false;
+    playerSign.textContent = "?";
+    computerSign.textContent = "?";
 }
 
 function gameOver() {
