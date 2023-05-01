@@ -6,6 +6,8 @@ const resultH2 = document.querySelector(".result");
 const roundDetailsH3 = document.querySelector(".details");
 const playerScoreP = document.querySelector(".playerScore");
 const computerScoreP = document.querySelector(".computerScore");
+const playerSign = document.querySelector(".signPlayer");
+const computerSign = document.querySelector(".signComputer");
 
 rockBtn.addEventListener("click", function() {
     Game("rock");
@@ -31,6 +33,7 @@ function Game(playerChoice) {
     const playerSelection = playerChoice;
     const computerSelection = getComputerChoice();
     play(computerSelection, playerSelection);
+    changeSign(playerChoice, computerSelection);
     playerScoreP.textContent = "Player: " + playerScore;
     computerScoreP.textContent = "Computer: " + computerScore;
     gameOver();
@@ -111,5 +114,27 @@ function gameOver() {
         rockBtn.disabled = true;
         paperBtn.disabled = true;
         scissorsBtn.disabled = true;
+    }
+}
+
+function changeSign(playerChoice, computerChoice) {
+    if (playerChoice == "rock"){
+        playerSign.textContent = "✊";
+    }
+    else if (playerChoice == "paper"){
+        playerSign.textContent = "✋";
+    }
+    else if (playerChoice == "scissors"){
+        playerSign.textContent = "✌";
+    }
+
+    if (computerChoice == "rock"){
+        computerSign.textContent = "✊";
+    }
+    else if (computerChoice == "paper"){
+        computerSign.textContent = "✋";
+    }
+    else if (computerChoice == "scissors"){
+        computerSign.textContent = "✌";
     }
 }
