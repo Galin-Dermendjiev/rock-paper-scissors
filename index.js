@@ -1,35 +1,72 @@
-function Game() {
-    let computerScore = 0;
-    let playerScore = 0;
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+const restartBtn = document.querySelector(".restart");
+const resultH2 = document.querySelector(".result");
+const roundDetailsH3 = document.querySelector(".details");
 
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("Choose rock, paper or scissors")
+rockBtn.addEventListener("click", function() {
+    Game("rock");
+});
+
+paperBtn.addEventListener("click", function() {
+    Game("paper");
+});
+
+scissorsBtn.addEventListener("click", function() {
+    Game("scissors");
+});
+
+restartBtn.addEventListener("click", restart);
+
+let computerScore = 0;
+let playerScore = 0;
+resultH2.textContent = "Choose your weapon.";
+roundDetailsH3.textContent = "First to score 5 points wins the game";
+
+function Game(playerChoice) {
+
+    // for (let i = 0; i < 5; i++) {
+    //     const playerSelection = prompt("Choose rock, paper or scissors")
+    //     const computerSelection = getComputerChoice()
+    //     let result = play(computerSelection, playerSelection)
+
+    //     console.log(result)
+
+    //     if (result.includes("Win")) {
+    //         playerScore++
+    //     }
+    //     else if(result.includes("Lose")) {
+    //         computerScore++
+    //     }
+    //     else {
+    //         playerScore++
+    //         computerScore++
+    //     }
+    // }
+    const playerSelection = playerChoice
         const computerSelection = getComputerChoice()
         let result = play(computerSelection, playerSelection)
 
-        console.log(result)
+        //resultH2.textContent = result;
 
-        if (result.includes("Win")) {
-            playerScore++
-        }
-        else if(result.includes("Lose")) {
-            computerScore++
-        }
-        else {
-            playerScore++
-            computerScore++
-        }
-    }
+        // if (result.includes("Win")) {
+        //     playerScore++
+        // }
+        // else if(result.includes("Lose")) {
+        //     computerScore++
+        // }
+        
 
-    if (playerScore > computerScore) {
-        console.log("You win the game! " + playerScore + " : " + computerScore)
-    }
-    else if (computerScore > playerScore) {
-        console.log("You lose the game! " + computerScore + " : " + playerScore)
-    }
-    else {
-        console.log("The game is a tie! " + playerScore + " : " + computerScore)
-    }
+    // if (playerScore > computerScore) {
+    //     roundDetailsH3.textContent = "You win! " + playerScore + " : " + computerScore;
+    // }
+    // else if (computerScore > playerScore) {
+    //     roundDetailsH3.textContent = "You lose! " + playerScore + " : " + computerScore;
+    // }
+    // else {
+    //     roundDetailsH3.textContent = "It is a tie! " + playerScore + " : " + computerScore;
+    // }
 }
 
 
@@ -49,27 +86,41 @@ function getComputerChoice() {
 
 function play(computerSelection, playerSelection) {
     if (playerSelection == computerSelection) {
-        return "It's a tie"
+        resultH2.textContent = "It's a tie"
     }
     else if (playerSelection == "rock") {
         if (computerSelection == "scissors") {
-            return "You Win! Rock beats Scissors"
+
+            resultH2.textContent = "You Win!"
+            roundDetailsH3.textContent = "Rock beats Scissors"
         } else {
-            return "You Lose! Paper beats Rock"
+            resultH2.textContent = "You Lose!"
+            roundDetailsH3.textContent = "Paper beats Rock"
         }
     }
     else if (playerSelection == "paper") {
         if (computerSelection == "rock") {
-            return "You Win! Paper beats Rock"
+            resultH2.textContent = "You Win!"
+            roundDetailsH3.textContent = "Paper beats Rock"
         } else {
-            return "You Lose! Scissors beats Paper"
+            resultH2.textContent = "You Lose!"
+            roundDetailsH3.textContent = "Scissors beats Paper"
         }
     }
     else if (playerSelection == "scissors") {
         if (computerSelection == "paper") {
-            return "You Win! Scissors beats Paper"
+            resultH2.textContent = "You Win!"
+            roundDetailsH3.textContent = "Scissors beats Paper"
         } else {
-            return "You Lose! Rock beats Scissors"
+            resultH2.textContent = "You Lose!"
+            roundDetailsH3.textContent = "Rock beats Scissors"
         }
     }
+}
+
+function restart() {
+    computerScore = 0;
+    playerScore = 0;
+    resultH2.textContent = "Choose your weapon. First to score 5 points wins the game";
+    roundDetailsH3.textContent = "First to score 5 points wins the game";
 }
