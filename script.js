@@ -4,6 +4,8 @@ const scissorsBtn = document.querySelector(".scissors");
 const restartBtn = document.querySelector(".restart");
 const resultH2 = document.querySelector(".result");
 const roundDetailsH3 = document.querySelector(".details");
+const playerScoreP = document.querySelector(".playerScore");
+const computerScoreP = document.querySelector(".computerScore");
 
 rockBtn.addEventListener("click", function() {
     Game("rock");
@@ -19,54 +21,20 @@ scissorsBtn.addEventListener("click", function() {
 
 restartBtn.addEventListener("click", restart);
 
-let computerScore = 0;
-let playerScore = 0;
-resultH2.textContent = "Choose your weapon.";
-roundDetailsH3.textContent = "First to score 5 points wins the game";
+let computerScore;
+let playerScore;
+
+restart();
 
 function Game(playerChoice) {
 
-    // for (let i = 0; i < 5; i++) {
-    //     const playerSelection = prompt("Choose rock, paper or scissors")
-    //     const computerSelection = getComputerChoice()
-    //     let result = play(computerSelection, playerSelection)
+    const playerSelection = playerChoice;
+    const computerSelection = getComputerChoice();
+    play(computerSelection, playerSelection);
+    playerScoreP.textContent = "Player: " + playerScore;
+    computerScoreP.textContent = "Computer: " + computerScore;
+    gameOver();
 
-    //     console.log(result)
-
-    //     if (result.includes("Win")) {
-    //         playerScore++
-    //     }
-    //     else if(result.includes("Lose")) {
-    //         computerScore++
-    //     }
-    //     else {
-    //         playerScore++
-    //         computerScore++
-    //     }
-    // }
-    const playerSelection = playerChoice
-        const computerSelection = getComputerChoice()
-        let result = play(computerSelection, playerSelection)
-
-        //resultH2.textContent = result;
-
-        // if (result.includes("Win")) {
-        //     playerScore++
-        // }
-        // else if(result.includes("Lose")) {
-        //     computerScore++
-        // }
-        
-
-    // if (playerScore > computerScore) {
-    //     roundDetailsH3.textContent = "You win! " + playerScore + " : " + computerScore;
-    // }
-    // else if (computerScore > playerScore) {
-    //     roundDetailsH3.textContent = "You lose! " + playerScore + " : " + computerScore;
-    // }
-    // else {
-    //     roundDetailsH3.textContent = "It is a tie! " + playerScore + " : " + computerScore;
-    // }
 }
 
 
@@ -87,33 +55,39 @@ function getComputerChoice() {
 function play(computerSelection, playerSelection) {
     if (playerSelection == computerSelection) {
         resultH2.textContent = "It's a tie"
+        roundDetailsH3.textContent = "Round not counted"
     }
     else if (playerSelection == "rock") {
         if (computerSelection == "scissors") {
-
             resultH2.textContent = "You Win!"
             roundDetailsH3.textContent = "Rock beats Scissors"
+            playerScore++;
         } else {
             resultH2.textContent = "You Lose!"
             roundDetailsH3.textContent = "Paper beats Rock"
+            computerScore++;
         }
     }
     else if (playerSelection == "paper") {
         if (computerSelection == "rock") {
             resultH2.textContent = "You Win!"
             roundDetailsH3.textContent = "Paper beats Rock"
+            playerScore++;
         } else {
             resultH2.textContent = "You Lose!"
             roundDetailsH3.textContent = "Scissors beats Paper"
+            computerScore++;
         }
     }
     else if (playerSelection == "scissors") {
         if (computerSelection == "paper") {
             resultH2.textContent = "You Win!"
             roundDetailsH3.textContent = "Scissors beats Paper"
+            playerScore++;
         } else {
             resultH2.textContent = "You Lose!"
             roundDetailsH3.textContent = "Rock beats Scissors"
+            computerScore++;
         }
     }
 }
@@ -123,4 +97,19 @@ function restart() {
     playerScore = 0;
     resultH2.textContent = "Choose your weapon. First to score 5 points wins the game";
     roundDetailsH3.textContent = "First to score 5 points wins the game";
+    playerScoreP.textContent = "Player: " + playerScore;
+    computerScoreP.textContent = "Computer: " + computerScore;
+
+    rockBtn.disabled = false;
+    paperBtn.disabled = false;
+    scissorsBtn.disabled = false;
+}
+
+function gameOver() {
+    if(playerScore >= 5 || computerScore >= 5)
+    {
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
+    }
 }
