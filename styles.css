@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+}
+body{
+    height: 100%;
+}
+
+.header{
+    background-color: #e4ddf4;
+    padding:2.5%;
+    
+}
+
+.title{
+    color: #2d2d2d;
+    font-size: 55pt;
+    text-align: center;
+}
+
+.main{
+    background-color: #fffbf0;
+    padding: 5% 25%;
+    text-align: center;
+}
+
+.result{
+    font-size: 42pt;
+    color: #2d2d2d;
+}
+.details{
+    font-size: 38pt;
+    color: #2d2d2d;
+}
+
+.score-box{
+    display: inline-block;
+    font-size: 48pt;
+    color: #2d2d2d;
+    padding: 30pt;
+}
+
+.buttons{
+    display: block;
+}
+button{
+    margin: 15pt;
+    width: 80pt;
+    height: 60pt;
+    text-align: center;
+    background-color: #282612;
+    border-radius: 12pt;
+    border: none;
+    font-size: 20pt;
+    color: white;
+}
+
+button:hover{
+    background-color: #98eaf5;
+    color: #282612;
+}
+
+.footer{
+    background-color: #282612;
+    padding: 3%;
+    text-align: center;
+    font-size: 15pt;
+    color: white;
+}

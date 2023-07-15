@@ -98,7 +98,7 @@ function play(computerSelection, playerSelection) {
 function restart() {
     computerScore = 0;
     playerScore = 0;
-    resultH2.textContent = "Choose your weapon. First to score 5 points wins the game";
+    resultH2.textContent = "Choose your weapon.";
     roundDetailsH3.textContent = "First to score 5 points wins the game";
     playerScoreP.textContent = "Player: " + playerScore;
     computerScoreP.textContent = "Computer: " + computerScore;
